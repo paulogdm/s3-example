@@ -1,0 +1,28 @@
+{
+  "name": "micro-s3-example",
+  "version": "1.0.0",
+  "description": "Simple example using Zeit's micro and the AWS SDK for upload and fetch of images.",
+  "main": "index.js",
+  "scripts": {
+    "start": "micro-dev",
+    "test": "ava test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulogdm/micro-s3-example.git"
+  },
+  "keywords": [
+    "micro"
+  ],
+  "author": "paulogdm",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paulogdm/micro-s3-example/issues"
+  },
+  "homepage": "https://github.com/paulogdm/micro-s3-example#readme",
+  "dependencies": {
+    "aws-sdk": "^2.209.0",
+    "micro": "^9.1.4",
+    "microrouter": "^3.1.1"
+  }
+}

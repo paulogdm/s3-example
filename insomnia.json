@@ -1,0 +1,86 @@
+{
+	"_type": "export",
+	"__export_format": 3,
+	"__export_date": "2018-03-15T16:06:00.122Z",
+	"__export_source": "insomnia.desktop.app:v5.14.7",
+	"resources": [
+		{
+			"_id": "wrk_c1f39632c71843e4a6c039711618dd74",
+			"created": 1519050772281,
+			"description": "",
+			"modified": 1519050772281,
+			"name": "Insomnia",
+			"parentId": null,
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_73a3a0e501b644a9bb0dab9bb0eb8f26",
+			"color": null,
+			"created": 1519050772370,
+			"data": {},
+			"isPrivate": false,
+			"modified": 1519050772370,
+			"name": "New Environment",
+			"parentId": "wrk_c1f39632c71843e4a6c039711618dd74",
+			"_type": "environment"
+		},
+		{
+			"_id": "jar_f25d31d7a6424482ab276a1806eba448",
+			"cookies": [],
+			"created": 1519050772558,
+			"modified": 1519050772558,
+			"name": "Default Jar",
+			"parentId": "wrk_c1f39632c71843e4a6c039711618dd74",
+			"_type": "cookie_jar"
+		},
+		{
+			"_id": "req_09a46b43687a4bc6acc1d976c2a41213",
+			"authentication": {},
+			"body": {
+				"fileName": "/home/paulogdm/Downloads/favicon-192.png",
+				"mimeType": "application/octet-stream"
+			},
+			"created": 1520963395945,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_87ca97d18e4e4227903d90f2d9c6e61f",
+					"name": "Content-Type",
+					"value": "image/png"
+				}
+			],
+			"metaSortKey": -1520963395946,
+			"method": "POST",
+			"modified": 1521128570463,
+			"name": "POST",
+			"parameters": [],
+			"parentId": "wrk_c1f39632c71843e4a6c039711618dd74",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "localhost:3000/1.png ",
+			"_type": "request"
+		},
+		{
+			"_id": "req_6eebe8bdc2fb492896f1f5a333fa76aa",
+			"authentication": {},
+			"body": {},
+			"created": 1521028331125,
+			"description": "",
+			"headers": [],
+			"metaSortKey": -1520007172564.5,
+			"method": "GET",
+			"modified": 1521128545285,
+			"name": "GET",
+			"parameters": [],
+			"parentId": "wrk_c1f39632c71843e4a6c039711618dd74",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "localhost:3000/1.png",
+			"_type": "request"
+		}
+	]
+}
