@@ -22,7 +22,6 @@
   "homepage": "https://github.com/paulogdm/micro-s3-example#readme",
   "dependencies": {
     "aws-sdk": "^2.209.0",
-    "micro": "^9.1.4",
-    "microrouter": "^3.1.1"
+    "micro": "^9.1.4"
   }
 }

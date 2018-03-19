@@ -1,5 +1,4 @@
 // Micro deps
-const { router, post, get } = require('microrouter')
 const { buffer, createError, send } = require('micro')
 
 // Configs
@@ -13,7 +12,7 @@ const aws = require('aws-sdk')
 aws.config.update({
   'accessKeyId': ACCESS_KEY,
   'secretAccessKey': SECRET_KEY,
-  'region': 'us-west-1',
+  'region': REGION,
   'bucketname': BUCKET_NAME
 })
 
@@ -116,16 +115,17 @@ const handleErrors = fn => async (req, res) => {
   }
 }
 
-/**
- * Routes for this API.
- * Isn't `microrouter` great?
- */
-const routes = router(
-  get('/:name.:type', handleErrors(fetch)),
-  post('/:name.:type', handleErrors(set))
-)
+const router = async (req, res) => {
+  if (req.method === 'POST') {
+    return set(req, res)
+  } else if (req.method === 'GET') {
+    return fetch(req, res)
+  } else {
+    throw createError(405, 'Invalid method')
+  }
+}
 
 /**
  * Exporting http server created by `microrouter`
  */
-module.exports = routes
+module.exports = handleErrors(router)
