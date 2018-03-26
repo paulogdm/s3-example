@@ -4,6 +4,8 @@ Simple example using Zeit's micro and the AWS SDK to upload files to the cloud.
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/paulogdm/micro-s3-example)
+
 ## How to use
 
 ### Getting Started
