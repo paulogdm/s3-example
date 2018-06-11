@@ -65,7 +65,6 @@ However you may want to just upload from the client directly to the S3 bucket wi
 
  * [micro](https://github.com/zeit/micro)
  * [AWS SDK](https://github.com/aws/aws-sdk-js)
- * [microrouter](https://github.com/pedronauck/micro-router)
 
 ## Author
 
