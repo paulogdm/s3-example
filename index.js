@@ -48,16 +48,16 @@ const uploadBuffer = async (fileBuffer, contentType, s3key) => {
  */
 const set = async (req, res) => {
   const buf = await buffer(req, {limit: '5mb'})
-  const filename = req.params.name + '.' + req.params.type
+  const fileName = req.url.split('/').pop()
   const contentType = req.headers['content-type']
 
-  if (!req.params.name || !req.params.type) {
+  if (!fileName || !contentType) {
     throw createError(400, 'Bad Params')
   }
 
-  await uploadBuffer(buf, contentType, filename)
+  await uploadBuffer(buf, contentType, fileName)
 
-  return filename
+  return fileName
 }
 
 /**
@@ -79,7 +79,7 @@ const redirect = async (req, res, location) => {
  * @param  {Object} res
  */
 const fetch = async (req, res) => {
-  const filename = req.params.name + '.' + req.params.type
+  const filename = req.url.split('/').pop()
 
   try {
     await s3.headObject({
