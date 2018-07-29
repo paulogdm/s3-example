@@ -12,14 +12,19 @@ Simple example using Zeit's micro and the AWS SDK to upload files to the cloud.
 
 Clone this [repo](https://github.com/paulogdm/micro-s3-example):
 
-Edit the index.js:
+Edit `config.js`:
 
 ```javascript
-const BUCKET_NAME = 'cultofthepartyparrot'
-const ACCESS_KEY = 'MY_ACCESS_KEY'
-const SECRET_KEY = 'MY_SECRET_KEY'
-const REGION = 'us-west-1'
+// ...
+  BUCKET_NAME: isNOW ? process.env.BUCKET_NAME : 'micro-s3-example',
+  ACCESS_KEY: isNOW ? process.env.ACCESS_KEY : 'ACCESSKEY',
+  SECRET_KEY: isNOW ? process.env.SECRET_KEY : 'SECRETKEY',
+  REGION: isNOW ? process.env.REGION : 'us-west-1'
+// ...
 ```
+
+If you are running this example locally, you should edit the fields on the left. If you are planning to test it on [now.sh](https://now.sh) you need to add secrets. Please refer to the section "[deploying to now.sh](https://github.com/paulogdm/micro-s3-example#deploying-to-nowsh)".
+
 ### Running and installing
 
 ```bash
@@ -28,38 +33,35 @@ npm install -g micro-dev micro
 npm run start
 ```
 
-### Using
-
-Upload file:
-
-```bash
-curl  --request POST --data-binary "./1.png" localhost:3000/1.png
-```
-
-Fetch file:
-
-```bash
-curl  --request GET localhost:3000/1.png
-```
-
 ### Rest Clients
 
-You can also see this example action with [Insomnia](https://insomnia.rest/) importing the request from [insomnia.json](insomnia.json).
-
-A "HTTP Archive" file is also provided [here](HttpArchive.har).
+You can also see this example in action with [Insomnia](https://insomnia.rest/) importing the requests from [insomnia.json](insomnia.json).
 
 ### Deploying to `now.sh`
 
-Deploy it to the cloud with [now](https://zeit.co/now)
+First install `now`:
 
 ```bash
-now
+npm install -g now
 ```
 
-## Note
+Second you need to add a few `now` [secrets](https://zeit.co/docs/getting-started/secrets):
 
-This example uploads the file to a server and then save it to S3.
-However you may want to just upload from the client directly to the S3 bucket with [Pre Signed Post](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#createPresignedPost-property)
+```bash
+now secrets add BUCKET_NAME "micro-s3-example"
+now secrets add ACCESS_KEY "ACCESSKEY"
+now secrets add SECRET_KEY "SECRETKEY"
+now secrets add REGION "us-west-1"
+```
+
+*PS: The key of those secrets will always be lower case (E.g: `BUCKET_NAME` will be `process.env.bucket_name`)*
+
+Deploy it to the cloud with [now](https://zeit.co/now):
+
+```bash
+npm run deploy
+```
+Check the script "deploy" inside "package.json" if you are trying 
 
 ## Packages Used In This Example
 

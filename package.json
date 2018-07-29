@@ -1,10 +1,15 @@
 {
   "name": "micro-s3-example",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Simple example using Zeit's micro and the AWS SDK for upload and fetch of images.",
   "main": "index.js",
   "scripts": {
-    "start": "micro-dev",
+    "start": "micro",
+    "start-dev": "micro-dev",
+    "deploy": "npm run deploy-to-now && npm run alias && npm run rm",
+    "deploy-to-now": "now --public",
+    "alias": "now alias",
+    "rm": "now rm s3-medium-example --safe --yes",
     "test": "ava test.js"
   },
   "repository": {

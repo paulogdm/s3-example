@@ -1,85 +1,208 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2018-03-15T16:06:00.122Z",
-	"__export_source": "insomnia.desktop.app:v5.14.7",
+	"__export_date": "2018-07-29T02:57:31.333Z",
+	"__export_source": "insomnia.desktop.app:v6.0.1",
 	"resources": [
 		{
-			"_id": "wrk_c1f39632c71843e4a6c039711618dd74",
-			"created": 1519050772281,
+			"_id": "wrk_ebecf2de23ea435e91753de7b08e464a",
+			"created": 1532820985181,
 			"description": "",
-			"modified": 1519050772281,
-			"name": "Insomnia",
+			"modified": 1532820985181,
+			"name": "S3",
 			"parentId": null,
 			"_type": "workspace"
 		},
 		{
-			"_id": "env_73a3a0e501b644a9bb0dab9bb0eb8f26",
+			"_id": "env_3a4a5c7219a540e3a03455118a4d2ea0",
 			"color": null,
-			"created": 1519050772370,
+			"created": 1532820985198,
 			"data": {},
 			"isPrivate": false,
-			"modified": 1519050772370,
+			"metaSortKey": 1532833051335,
+			"modified": 1532820985198,
 			"name": "New Environment",
-			"parentId": "wrk_c1f39632c71843e4a6c039711618dd74",
+			"parentId": "wrk_ebecf2de23ea435e91753de7b08e464a",
 			"_type": "environment"
 		},
 		{
-			"_id": "jar_f25d31d7a6424482ab276a1806eba448",
-			"cookies": [],
-			"created": 1519050772558,
-			"modified": 1519050772558,
+			"_id": "jar_c283703f01804dbcb3ef5884543a8d41",
+			"cookies": [
+				{
+					"creation": "2018-07-29T02:46:39.666Z",
+					"domain": "s3-medium-example.now.sh",
+					"expires": "2019-07-29T02:46:39.000Z",
+					"hostOnly": false,
+					"httpOnly": true,
+					"id": "017859839481414896",
+					"key": "__cfduid",
+					"lastAccessed": "2018-07-29T02:46:39.666Z",
+					"path": "/",
+					"value": "da4e2181827f9f9034ba3b8b886708be01532832399"
+				}
+			],
+			"created": 1532820985204,
+			"modified": 1532832399667,
 			"name": "Default Jar",
-			"parentId": "wrk_c1f39632c71843e4a6c039711618dd74",
+			"parentId": "wrk_ebecf2de23ea435e91753de7b08e464a",
 			"_type": "cookie_jar"
 		},
 		{
-			"_id": "req_09a46b43687a4bc6acc1d976c2a41213",
+			"_id": "req_3b1844fa4f4545d8ba4043212f1e2b58",
 			"authentication": {},
-			"body": {
-				"fileName": "/home/paulogdm/Downloads/favicon-192.png",
-				"mimeType": "application/octet-stream"
-			},
-			"created": 1520963395945,
+			"body": {},
+			"created": 1532821001917,
 			"description": "",
-			"headers": [
-				{
-					"id": "pair_87ca97d18e4e4227903d90f2d9c6e61f",
-					"name": "Content-Type",
-					"value": "image/png"
-				}
-			],
-			"metaSortKey": -1520963395946,
-			"method": "POST",
-			"modified": 1521128570463,
-			"name": "POST",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1532821001767,
+			"method": "GET",
+			"modified": 1532833024415,
+			"name": "Request GET url",
 			"parameters": [],
-			"parentId": "wrk_c1f39632c71843e4a6c039711618dd74",
+			"parentId": "wrk_ebecf2de23ea435e91753de7b08e464a",
 			"settingDisableRenderRequestBody": false,
 			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
-			"url": "localhost:3000/1.png ",
+			"url": "https://s3-medium-example.now.sh/{% response 'body', 'req_73c178aca23549d68c512d70911a99df', '$.fields.key' %}",
 			"_type": "request"
 		},
 		{
-			"_id": "req_6eebe8bdc2fb492896f1f5a333fa76aa",
+			"_id": "req_73c178aca23549d68c512d70911a99df",
 			"authentication": {},
-			"body": {},
-			"created": 1521028331125,
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"contentType\": \"image/png\"\n}\n"
+			},
+			"created": 1532828320915,
 			"description": "",
-			"headers": [],
-			"metaSortKey": -1520007172564.5,
-			"method": "GET",
-			"modified": 1521128545285,
-			"name": "GET",
+			"headers": [
+				{
+					"id": "pair_e4cdcd0fcea04bd49cd8c56f506ce5aa",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1532821001867,
+			"method": "POST",
+			"modified": 1532833006621,
+			"name": "Request POST url",
 			"parameters": [],
-			"parentId": "wrk_c1f39632c71843e4a6c039711618dd74",
+			"parentId": "wrk_ebecf2de23ea435e91753de7b08e464a",
 			"settingDisableRenderRequestBody": false,
 			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
-			"url": "localhost:3000/1.png",
+			"url": "https://s3-medium-example.now.sh",
+			"_type": "request"
+		},
+		{
+			"_id": "req_cafc0fa37c974ec1bbe5b85150cf63d6",
+			"authentication": {},
+			"body": {},
+			"created": 1532828342871,
+			"description": "",
+			"headers": [],
+			"isPrivate": false,
+			"metaSortKey": -1532821001717,
+			"method": "GET",
+			"modified": 1532833027615,
+			"name": "Fetch from S3",
+			"parameters": [],
+			"parentId": "wrk_ebecf2de23ea435e91753de7b08e464a",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{% response 'raw', 'req_3b1844fa4f4545d8ba4043212f1e2b58', '' %}",
+			"_type": "request"
+		},
+		{
+			"_id": "req_a6b8d3373dc44b83985809350413d5ca",
+			"authentication": {},
+			"body": {
+				"mimeType": "multipart/form-data",
+				"params": [
+					{
+						"id": "pair_4ea8cd1bff414718b4db707878e039c5",
+						"name": "key",
+						"value": "{% response 'body', 'req_73c178aca23549d68c512d70911a99df', '$.fields.key' %}"
+					},
+					{
+						"id": "pair_a0c796496e7f441d8bf66a27c465d5dd",
+						"name": "acl",
+						"value": "{% response 'body', 'req_73c178aca23549d68c512d70911a99df', '$.acl' %}"
+					},
+					{
+						"id": "pair_3e6e0da621784a2eb51c981107bf2a98",
+						"name": "Content-Type",
+						"value": "{% response 'body', 'req_73c178aca23549d68c512d70911a99df', '$[\\'Content-Type\\']' %}"
+					},
+					{
+						"id": "pair_7c2bb1feaea74c528c8724a1849a5ed5",
+						"name": "X-Amz-Credential",
+						"value": "{% response 'body', 'req_73c178aca23549d68c512d70911a99df', '$.fields[\\'X-Amz-Credential\\']' %}"
+					},
+					{
+						"id": "pair_a60f56ff3a8e4cb3b3c86312066acac8",
+						"name": "X-Amz-Algorithm",
+						"value": "{% response 'body', 'req_73c178aca23549d68c512d70911a99df', '$.fields[\\'X-Amz-Algorithm\\']' %}"
+					},
+					{
+						"id": "pair_2d6c8a1c50e6464cb180f16392422ad2",
+						"name": "X-Amz-Date",
+						"value": "{% response 'body', 'req_73c178aca23549d68c512d70911a99df', '$.fields[\\'X-Amz-Date\\']' %}"
+					},
+					{
+						"id": "pair_6aea5b4f2e394057a9889c5bc8f4173a",
+						"name": "Policy",
+						"value": "{% response 'body', 'req_73c178aca23549d68c512d70911a99df', '$.fields.Policy' %}"
+					},
+					{
+						"id": "pair_b8662abd21fd4740879f2b6536c654ab",
+						"name": "X-Amz-Signature",
+						"value": "{% response 'body', 'req_73c178aca23549d68c512d70911a99df', '$.fields[\\'X-Amz-Signature\\']' %}"
+					},
+					{
+						"fileName": "C:\\Users\\paulo\\Documents\\GitHub\\micro-s3-example\\1.png",
+						"id": "pair_c76af53042014de38cf71cf166ac00e2",
+						"name": "file",
+						"type": "file",
+						"value": ""
+					}
+				]
+			},
+			"created": 1532828579302,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_84823cf0c0d64c0e8a3abc5879e474af",
+					"name": "Content-Type",
+					"value": "multipart/form-data"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1532821001817,
+			"method": "POST",
+			"modified": 1532833016300,
+			"name": "Uploading to S3",
+			"parameters": [],
+			"parentId": "wrk_ebecf2de23ea435e91753de7b08e464a",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingMaxTimelineDataSize": 1000,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{% response 'body', 'req_73c178aca23549d68c512d70911a99df', '$.url' %}",
 			"_type": "request"
 		}
 	]
