@@ -1,4 +1,5 @@
 {
+  "version": 1,
   "name": "s3-medium-example",
   "engines": {
     "node": "9.x.x"
