@@ -1,5 +1,4 @@
-// Config object
-const config = require('./config')
+const config = require('../config')
 
 if (!config.bucket_name) throw new Error('Please check your configuration!')
 
@@ -77,7 +76,7 @@ const generateUUID = (size = 10) => {
  * @return {String} Object response from S3
  */
 const postS3 = async (req, res) => {
-  const {contentType} = await json(req) // we are requiring the ContenType from the request 
+  const {contentType} = await json(req) // we are requiring the ContenType from the request
 
   const s3key = `${generateUUID()}.${contentType.split('/').pop()}` // this works for png, jpg, pdf, ...
 
