@@ -3,8 +3,9 @@
   "public": true,
   "name": "s3-example",
   "alias": [
-    "s3-medium-example"
+    "s3-example"
   ],
+  "regions": ["sfo1"],
   "env": {
     "bucket_name": "@bucket_name",
     "access_key": "@access_key",
