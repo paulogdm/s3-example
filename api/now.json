@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "name": "s3-medium-example",
+  "engines": {
+    "node": "9.x.x"
+  },
+  "scale": {
+    "sfo1": {
+      "min": 1,
+      "max": 1
+    }
+  },
+  "alias": [
+    "s3-medium-example"
+  ],
+  "env": {
+    "bucket_name": "@bucket_name",
+    "access_key": "@access_key",
+    "secret_key": "@secret_key",
+    "region": "@region"
+  }
+}

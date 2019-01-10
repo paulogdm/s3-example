@@ -1,0 +1,16 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start-get": "micro-dev handlers/get.js",
+    "start-post": "micro-dev handlers/post.js",
+    "test": "ava test.js"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.209.0",
+    "micro": "^9.1.4"
+  },
+  "author": "paulogdm",
+  "license": "MIT"
+}
