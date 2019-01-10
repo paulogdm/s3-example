@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "name": "s3-medium-example",
-  "regions": [],
+  "public": true,
+  "name": "s3-example",
   "alias": [
     "s3-medium-example"
   ],
@@ -12,7 +12,11 @@
     "region": "@region"
   },
   "builds": [
-    {"src": "index.js", "use": "@now/index.js"},
-    {}
+    {"src": "api/handlers/get.js", "use": "@now/node"},
+    {"src": "api/handlers/post.js", "use": "@now/node"}
+  ],
+  "routes": [
+    {"src": "^/s3$", "methods":["POST"], "dest": "/api/handlers/post.js"},
+    {"src": "^/s3/.+$", "methods":["GET"], "dest": "/api/handlers/get.js"}
   ]
 }

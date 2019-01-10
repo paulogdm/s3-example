@@ -19,18 +19,21 @@ aws.config.setPromisesDependency(null)
 const s3 = new aws.S3()
 
 // Micro deps
-const {createError, json} = require('micro')
+const {createError, send, json} = require('micro')
 
 // For generation of UUIDs
 const { randomBytes } = require('crypto')
 
 /**
+ * This function retrieves a signed URL.
+ * It is useful to programatically restrict access to some objects.
+ * to S3 objects, like private files.
  * @param  {req}    req object from micro
  * @param  {res}    res object from micro
  * @return {String} URL response from S3
  */
-const getS3 = async (req, res) => {
-  const s3key = `${req.url.substr(1)}` // we need to remove the first backslash from the url
+const getSignedS3 = async (req, res) => {
+  const s3key = `${req.url.split('/').pop()}`
 
   const params = {
     Bucket: config.bucket_name,
@@ -45,9 +48,50 @@ const getS3 = async (req, res) => {
       Key: params.Key
     }).promise()
 
-    // if it does, generate a signed url
-    const url = await s3.getSignedUrl('getObject', params)
-    return url
+    // if you want to programatically provide limited access to an S3 object:
+    // const url = await s3.getSignedUrl('getObject', params)
+    // return send(res, statusCode, url)
+
+    // we will use Now 2.0 bultin CDN bellow
+    const result = await s3.getObject(params).promise()
+    console.info(result)
+    return send(res, 200, result.data)
+  } catch (err) {
+    if (err.statusCode === 404) {
+      throw createError(404, 'Not Found')
+    } else throw err
+  }
+}
+
+/**
+ * This function sets cache readers to save content in the CDN.
+ * @param  {req}    req object from micro
+ * @param  {res}    res object from micro
+ * @return {String} URL response from S3
+ */
+const getS3 = async (req, res) => {
+  const s3key = `${req.url.split('/').pop()}`
+
+  const params = {
+    Bucket: config.bucket_name,
+    Key: s3key
+  }
+  console.info(s3key)
+  try {
+    // key exists?
+    await s3.headObject({
+      Bucket: params.Bucket,
+      Key: params.Key
+    }).promise()
+
+    // cache headers
+    res.setHeader('Cache-Control', 's-maxage=31536000, maxage=0')
+    // retrieving object from S3
+    const result = await s3.getObject(params).promise()
+    // set the right Content-Type
+    res.setHeader('Content-Type', result['ContentType'])
+
+    return send(res, 200, result.Body)
   } catch (err) {
     if (err.statusCode === 404) {
       throw createError(404, 'Not Found')
@@ -103,14 +147,14 @@ const postS3 = async (req, res) => {
     ]
   }
 
-  const result = await s3.createPresignedPost(params)
-
-  return Object.assign(result,
+  let signedPost = await s3.createPresignedPost(params)
+  signedPost = Object.assign(signedPost,
     {
       'Content-Type': contentType,
       'acl': 'private'
     }
   )
+  return send(res, 200, signedPost)
 }
 
 module.exports = {

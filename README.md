@@ -1,16 +1,16 @@
-# Micro with S3 bucket example.
+# Serverless S3 example
 
-Simple example using Zeit's micro and the AWS SDK to upload files to the cloud.
+Simple example using Now 2.0, Zeit's micro and the AWS SDK to upload files to the cloud.
 
 [![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/paulogdm/micro-s3-example)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/paulogdm/s3-example)
 
 ## How to use
 
 ### Getting Started
 
-Clone this [repo](https://github.com/paulogdm/micro-s3-example):
+Clone this [repo](https://github.com/paulogdm/s3-example):
 
 Edit `config.js`:
 
@@ -23,19 +23,7 @@ Edit `config.js`:
 // ...
 ```
 
-If you are running this example locally, you should edit the fields on the left. If you are planning to test it on [now.sh](https://now.sh) you need to add secrets. Please refer to the section "[deploying to now.sh](https://github.com/paulogdm/micro-s3-example#deploying-to-nowsh)".
-
-### Running and installing
-
-```bash
-npm install
-npm install -g micro-dev micro
-npm run start
-```
-
-### Rest Clients
-
-You can also see this example in action with [Insomnia](https://insomnia.rest/) importing the requests from [insomnia.json](insomnia.json).
+If you are running this example locally, you should edit the fields on the right. If you are planning to test it on [now.sh](https://now.sh) you need to add [secrets](https://zeit.co/docs/v2/deployments/environment-variables-and-secrets/). Please refer to the section "[deploying to now.sh](https://github.com/paulogdm/s3-example#deploying-to-nowsh)".
 
 ### Deploying to `now.sh`
 
@@ -48,10 +36,10 @@ npm install -g now
 Second you need to add a few `now` [secrets](https://zeit.co/docs/getting-started/secrets):
 
 ```bash
-now secrets add BUCKET_NAME "micro-s3-example"
-now secrets add ACCESS_KEY "ACCESSKEY"
-now secrets add SECRET_KEY "SECRETKEY"
-now secrets add REGION "us-west-1"
+now secrets add bucket_name "micro-s3-example"
+now secrets add access_key "ACCESSKEY"
+now secrets add secret_key "SECRETKEY"
+now secrets add region "us-west-1"
 ```
 
 *PS: The key of those secrets will always be lower case (E.g: `BUCKET_NAME` will be `process.env.bucket_name`)*
@@ -59,9 +47,13 @@ now secrets add REGION "us-west-1"
 Deploy it to the cloud with [now](https://zeit.co/now):
 
 ```bash
-npm run deploy
+now
 ```
-Check the script "deploy" inside "package.json" if you are trying 
+Check the script "deploy" inside "package.json".
+
+### Rest Clients
+
+You can also see this example in action with [Insomnia](https://insomnia.rest/) importing the requests from [insomnia.json](insomnia.json).
 
 ## Packages Used In This Example
 
